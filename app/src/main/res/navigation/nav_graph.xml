@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.zrq.nicepicture.ui.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_picFragment"
+            app:destination="@id/picFragment"
+            app:enterAnim="@anim/anim_enter"
+            app:popExitAnim="@anim/anim_pop_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/picFragment"
+        android:name="com.zrq.nicepicture.ui.PicFragment"
+        android:label="fragment_pic"
+        tools:layout="@layout/fragment_pic" />
+</navigation>
