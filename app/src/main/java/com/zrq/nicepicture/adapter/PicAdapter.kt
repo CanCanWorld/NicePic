@@ -2,7 +2,6 @@ package com.zrq.nicepicture.adapter
 
 import android.content.Context
 import android.graphics.drawable.Drawable
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +18,8 @@ import com.zrq.nicepicture.databinding.ItemPictureBinding
 class PicAdapter(
     private val context: Context,
     private val list: MutableList<Vertical>,
-    private val onClickListener: (View, Int) -> Unit
+    private val onClickListener: (View, Int) -> Unit,
+    private val onLongClickListener: (View, Int) -> Unit
 ) : RecyclerView.Adapter<VH<ItemPictureBinding>>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH<ItemPictureBinding> {
         val mBinding = ItemPictureBinding.inflate(LayoutInflater.from(context), parent, false)
@@ -44,6 +44,10 @@ class PicAdapter(
                 })
                 .into(ivPic)
             ivPic.setOnClickListener { onClickListener(it, holder.adapterPosition) }
+            ivPic.setOnLongClickListener {
+                onLongClickListener(it, holder.adapterPosition)
+                true
+            }
         }
     }
 
