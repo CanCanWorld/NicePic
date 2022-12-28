@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Toast
+import com.google.android.material.tabs.TabLayoutMediator
 import com.google.gson.Gson
 import com.zrq.nicepicture.adapter.CategoryAdapter
 import com.zrq.nicepicture.bean.Category
@@ -28,6 +29,9 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         mBinding.apply {
             categoryAdapter = CategoryAdapter(requireActivity(), ids)
             viewPager.adapter = categoryAdapter
+
+            val mediator = TabLayoutMediator(tabLayout, viewPager) { tab, position -> tab.text = list[position].name }
+            mediator.attach()
         }
     }
 
